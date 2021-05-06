@@ -1,34 +1,72 @@
-<%= javascript_pack_tag 'landing' %>
+  <main role="main">
 
-<div class="container">
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">Souvenirs, souvenirs...</h1>
+        <p class="lead text-muted">L'endroit où stocker et retrouver vos photos
+        <br>souvenirs, et leurs anecdotes.</p>
+          <% if user_signed_in? %>
 
-  <div class="row">
-    <div class="col">
-    </div>
-    <div class="col">
-      <h1 class="text-center">Sweet Memories</h1>
-    </div>
-    <div class="col">
-    </div>
-  </div>
+            <%= link_to "Nouveau Souvenir", new_memory_path, class: "btn btn-primary my-2" %>
+            <%= button_to "Déconnexion", destroy_user_session_path, class: "btn btn-secondary my-2", method: :delete %>
+            
+          <% else %>
 
-  <% if user_signed_in? %>
-
-  
-    
-  <% else %>
-
-    <div class="row">
-      <div class="col">
+            <%= link_to "S'inscrire", new_user_registration_path, class: "btn btn-primary my-2" %>
+            <%= link_to "Se connecter", new_user_login_path, class: "btn btn-secondary my-2" %>
+            
+          <% end %>
       </div>
-      <div class="col text-center">
-          <button type="button" class="btn btn-primary" id="signUpBtn">Sign Up</button>
-          <button type="button" class="btn btn-secondary" id="logInBtn">Log In</button>
-      </div>
-      <div class="col">
+    </section>
+
+    <div class="album py-5 bg-light">
+      <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+          <% if user_signed_in? %>
+
+            <% if @memories.length <= 0 %>
+              <p>Il n'y a aucun souvenirs.<p>
+            <% else %>
+                <div class="d-flex">
+                  <% @memories.each do |memory| %>
+
+                  <div class="col">
+                    <div class="card shadow-sm">
+                      <%= image_tag(memory.picture, class: "bd-placeholder-img card-img-top", width: "100%", height: "225") %>
+
+                      <div class="card-body">
+                        <p class="card-text"><%= memory.title %></p>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Éditer</button>
+                          </div>
+                          <small class="text-muted"><%= memory.date %></small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <% end %>
+                </div>
+            <% end %>          
+          
+          <% end %>
+        
+        </div>
       </div>
     </div>
-    
-  <% end %>
 
-</div>
+  </main>
+
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Back to top</a>
+      </p>
+      <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+      <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+    </div>
+  </footer>

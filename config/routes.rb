@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get '/', to: "landing#index"
 
+  get '/new', to: "memories#new", as: "new_memory"
+
   devise_scope :user do
     get "/signin" => "devise/sessions#new", as: "new_user_login" # custom path to login/sign_in
     get "/signup" => "devise/registrations#new", as: "new_user_registration" # custom path to sign_up/registration

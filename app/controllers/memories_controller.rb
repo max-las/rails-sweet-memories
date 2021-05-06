@@ -1,9 +1,10 @@
 class MemoriesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_memory, only: %i[ show edit update destroy ]
 
   # GET /memories or /memories.json
   def index
-    @memories = Memory.all
+    @memories = current_user.memories
   end
 
   # GET /memories/1 or /memories/1.json
@@ -22,6 +23,7 @@ class MemoriesController < ApplicationController
   # POST /memories or /memories.json
   def create
     @memory = Memory.new(memory_params)
+    @memory.user = current_user;
 
     respond_to do |format|
       if @memory.save
@@ -64,6 +66,6 @@ class MemoriesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def memory_params
-      params.require(:memory).permit(:user_id, :title, :date, :picture, :note)
+      params.require(:memory).permit(:title, :date, :picture, :note)
     end
 end
