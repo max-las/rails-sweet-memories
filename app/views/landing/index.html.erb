@@ -12,15 +12,23 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col">
+  <% if user_signed_in? %>
+
+  
+    
+  <% else %>
+
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col text-center">
+          <button type="button" class="btn btn-primary" id="signUpBtn">Sign Up</button>
+          <button type="button" class="btn btn-secondary" id="logInBtn">Log In</button>
+      </div>
+      <div class="col">
+      </div>
     </div>
-    <div class="col text-center">
-        <button type="button" class="btn btn-primary" id="signUpBtn">Sign Up</button>
-        <button type="button" class="btn btn-secondary" id="logInBtn">Log In</button>
-    </div>
-    <div class="col">
-    </div>
-  </div>
+    
+  <% end %>
 
 </div>
