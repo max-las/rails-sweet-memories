@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/', to: "landing#index", as: "memories"
+  get '/', to: "landing#index"
 
   get '/new', to: "memories#new", as: "new_memory"
 
