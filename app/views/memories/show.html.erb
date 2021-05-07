@@ -1,29 +1,22 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>User:</strong>
-  <%= @memory.user_id %>
-</p>
-
-<p>
-  <strong>Title:</strong>
+  <strong>Titre :</strong>
   <%= @memory.title %>
 </p>
 
 <p>
-  <strong>Date:</strong>
+  <strong>Date du souvenir :</strong>
   <%= @memory.date %>
 </p>
 
 <p>
-  <strong>Picture:</strong>
+  <strong>Photo :</strong>
   <%= image_tag(@memory.picture, height: '100') %>
 </p>
 
 <p>
-  <strong>Note:</strong>
+  <strong>Notes :</strong>
   <%= @memory.note %>
 </p>
 
-<%= link_to 'Edit', edit_memory_path(@memory) %> |
-<%= link_to 'Back', memories_path %>
+<%= link_to 'Éditer', edit_memory_path(@memory) %> |
+<%= link_to 'Retour', memories_path %>

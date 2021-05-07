@@ -12,26 +12,26 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label :title, "Titre" %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :date %>
+    <%= form.label :date, "Date du souvenir" %>
     <%= form.date_field :date %>
   </div>
 
   <div class="field">
-    <%= form.label :picture %>
+    <%= form.label :picture, "Lien vers la photo" %>
     <%= form.text_field :picture %>
   </div>
 
   <div class="field">
-    <%= form.label :note %>
+    <%= form.label :note, "Notes" %>
     <%= form.text_area :note %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Enregistrer le souvenir" %>
   </div>
 <% end %>
