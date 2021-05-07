@@ -1,4 +1,4 @@
-<%= form_with(model: memory) do |form| %>
+<%= simple_form_for(memory) do |f| %>
   <% if memory.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(memory.errors.count, "error") %> prohibited this memory from being saved:</h2>
@@ -10,6 +10,15 @@
       </ul>
     </div>
   <% end %>
+
+  <%= f.input :title, label: "Titre" %>
+  <%= f.input :date, label: "Date du souvenir" %>
+  <%= f.input :picture, as: :url, label: "Url de la photo" %>
+  <%= f.input :note, as: :text, label: "Notes" %>
+  <%= f.button :submit, "Enregistrer le souvenir", class: "btn-primary" %>
+
+  <%# Précédent code %>
+  <% if false %>
 
   <div class="field">
     <%= form.label :title, "Titre" %>
@@ -34,4 +43,7 @@
   <div class="actions">
     <%= form.submit "Enregistrer le souvenir" %>
   </div>
+
+  <% end %>
+  <%# Fin précédent code %>
 <% end %>
